@@ -1,0 +1,55 @@
+#################
+#               #
+# Universal Key #
+#               #
+#################
+
+if UsesKnownCode()
+    return
+else
+    BruteForce()
+end
+
+bool UsesKnownCode()
+  var codes = GetKnownCodes()
+  loop code in codes
+    if Toggle(code)
+      return true
+    end 
+  end
+  return false
+end
+
+void BruteForce()
+  loop i from 0 to 99999
+    if Toggle(i)
+      # Success! But the correct code isn't
+      # displayed, so finish by using a bad
+      # code. Note it, add 1, then manually
+      # add it to the KnownCodes array below.
+      var previous = i - 1
+      Toggle(previous)
+      break
+    end
+  end
+end
+
+####################################
+# Don't read all of these codes if #
+# you don't want the spoilers!!!   #
+####################################
+Array GetKnownCodes()
+  Array codes = []
+  
+  Append(codes, 0) # Multiple things use this I think?
+  Append(codes, 13) # TownHall_DoorToLongsonOffice
+  Append(codes, 344) # Poor Storage
+  Append(codes, 1111) # Hotel Room 1
+  Append(codes, 1337) # Hotel_Office_DoorToBasement
+  Append(codes, 2358) # Hotel Room 2
+  Append(codes, 4991) # Renting Apartments
+  Append(codes, 5611) # Hotel Room 5
+  Append(codes, 9788) # Lodge related things
+  Append(codes, 34711) # Hotel Room 3
+  Append(codes, 45914) # Hotel Room 4
+end
