@@ -52,4 +52,6 @@ Array GetKnownCodes()
   Append(codes, 9788) # Lodge related things
   Append(codes, 34711) # Hotel Room 3
   Append(codes, 45914) # Hotel Room 4
+  
+  return codes
 end
