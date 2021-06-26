@@ -1,0 +1,10 @@
+# Best Drink Ever
+
+var sink = Connect("Poor_WaterTap_Poor_WaterTap")
+sink.SetLiquidAmount(1000)
+
+Charisma(100)
+Corruption(-100)
+Drunkenness(-100)
+Sleepiness(-100)
+Smelliness(-100)
