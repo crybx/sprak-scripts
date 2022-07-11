@@ -1,0 +1,50 @@
+string GetScriptObjectName()
+	# Replace this with the name of
+	# whatever object you put this code on.
+	# Anything that can Connect() can be
+	# carried is a good choice.
+    return "Hotel_Diner_Radio_1"
+end
+
+string GetComputerName()
+    return "CentralServer"
+end
+
+void TeleportTo(string target)
+    TeleportXToY("Sebastian", target)
+end
+
+void TeleportXToY(string target1, string target2)
+    # Recorder type computers seem to be the ones 
+	# with the MovePerson function.
+    string recorderName = "Hotel_ServerBasement_LargeRecorder_LargeRecorder_2"
+    string scriptObjectName = GetScriptObjectName()
+
+    var heart = Connect("Heart")    
+    var recorder = Connect(recorderName)
+
+    heart.SetPosition(scriptObjectName, recorderName)
+    heart.SetPosition(recorderName, target1)
+    
+    recorder.MovePerson(target1, target2)
+    
+    heart.SetPosition(recorderName, scriptObjectName)
+    heart.SetPosition(scriptObjectName, "SebastianCreditCard")
+end
+
+void Recharge(string target)
+    var heart = Connect("Heart")
+    heart.SetNumericData(target, "sleepiness", 0)
+    heart.SetNumericData(target, "charisma", 200)
+    heart.SetNumericData(target, "smelliness", 0)
+    heart.SetNumericData(target, "speed", 200)
+    heart.SetNumericData(target, "corruption", 0)
+end
+
+void Unlock(string target)
+    var Hugin = Connect("Hugin")
+    var Police = Connect("PoliceOfficeInterior_MinistryOfficeWorkstationComputer_1")
+    if Police.GetTypeOfThing(target) == "door"
+        Hugin.Unlock(target)
+    end
+end
